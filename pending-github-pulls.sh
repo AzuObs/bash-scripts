@@ -20,8 +20,8 @@ log_user_pulls() {
         process.stdin.on('end', () => {
 		var pulls = JSON.parse(pullsJSON) || [];
 		pulls.forEach(pull => {
-			if (pull.user.login === '$USER' && pull.state === 'open') {
-				console.log(pull.title + '	' +  pull.url);
+			if (pull.state === 'open') {
+				console.log(pull.title + ' by ' + pull.user.login  +' ' +  pull.url);
 			}
 		});
 	});
