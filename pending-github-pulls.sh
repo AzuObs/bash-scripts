@@ -30,10 +30,11 @@ log_user_pulls() {
 
 USER=${1:?'First argument must be your case sensitive github username'}
 PASSWORD=${2:?'Second argument must be your github password'}
+ORG=${3:?'Third argument must be your github org'}
 
-REPO_NAMES=$( curl -s -G "https://api.github.com/orgs/mapleinside/repos" -u "$USER:$PASSWORD" | log_repo_names )
+REPO_NAMES=$( curl -s -G "https://api.github.com/orgs/$ORG/repos" -u "$USER:$PASSWORD" --data-urlencode "per_page=1000" | log_repo_names )
 
 while IFS="" read -r REPO_NAME
 do
-	curl -s -G "https://api.github.com/repos/mapleinside/$REPO_NAME/pulls" -u "$USER:$PASSWORD" | log_user_pulls
+	curl -s -G "https://api.github.com/repos/$ORG/$REPO_NAME/pulls" -u "$USER:$PASSWORD" | log_user_pulls
 done <<< "$REPO_NAMES"
