@@ -1,10 +1,10 @@
 #!/bin/bash
 
 		#########################################################################
-		#	 	Remove Docker Entities - images, containers						#
+		#		Remove Docker Entities - images, containers						#
 		#																		#
 		#			dleaverfr@gmail.com											#
-		#			 															#
+		#																		#
 		#																		#
 		#########################################################################
 

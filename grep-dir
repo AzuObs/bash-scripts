@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Look for patterns in directory
+# "-m 1" means to exit file after first match
+# "-l" means to print file names instead of matches
+# "-r" means recursive
+
+PATTERN=${1:?"Your patters needs to be first arg"}
+SEARCH_DIR=${2:?"Your search dir need to be second arg"}
+EXCLUDE_DIR=${3:?"Your exclude needs to be third arg"}
+
+grep -Erl -m 1 "$PATTERN" "$SEARCH_DIR" --exclude-dir="$EXCLUDE_DIR"
